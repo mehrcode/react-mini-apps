@@ -2,95 +2,101 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function EggTimer() {
-    const [inputMinutes, setInputMinutes] = useState(5); //default value
-    const [time, setTime] = useState(0);
-    const [isActive, setIsActive] = useState(false);
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    const [minutes, setMinutes] = useState(5);
+    const [timeLeft, setTimeLeft] = useState(minutes * 60);
+    const [isRunning, setIsRunning] = useState(false);
+    const timeRef = useRef<NodeJS.Timeout | null>(null);
     const beepRef = useRef<HTMLAudioElement | null>(null);
-    const [isOkay, setIsOkay] = useState(false);
+    const [isNight, setIsNight] = useState(false);
 
-    //useEffect for timer
+    const initialTime = minutes * 60;
+    //Progress Bar
+    const percentage = (initialTime - timeLeft) / initialTime * 100;
+
+
+    //count down
     useEffect(() => {
-        if (isActive && time > 0) {
-            intervalRef.current = setInterval(() => {
-                setTime((prev) => prev - 1);
+        setTimeLeft(minutes * 60);
+    }, [minutes]);
+
+    useEffect(() => {
+        if (isRunning && timeLeft > 0) {
+            timeRef.current = setTimeout(() => {
+                setTimeLeft((prev) => prev - 1);
             }, 1000);
-        }
-
-        if (time === 0 && isActive) {
+        } else if (timeLeft === 0) {
+            setIsRunning(false);
             beepRef.current?.play();
-            setIsActive(false);
         }
 
-        return () => {
-            if (intervalRef.current) clearInterval(intervalRef.current);
-        };
-    }, [isActive, time]);
+        return () => clearTimeout(timeRef.current!);
+    }, [isRunning, timeLeft]);
 
-    const handleStart = () => {
-        setTime(inputMinutes * 60);
-        setIsActive(true);
+    // convert seconds to minutes
+    const formatTime = (time: number) => {
+        const min = String(Math.floor(time / 60)).padStart(2, "0");
+        const sec = String(time % 60).padStart(2, "0");
+        return `${min}:${sec}`;
     };
 
-    const handlePause = () => setIsActive(false);
-
-    const handleReset = () => {
-        setIsActive(false);
-        setTime(0);
-    };
-
-    const formatTime = (seconds: number) => {
-        const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-        const s = (seconds % 60).toString().padStart(2, '0');
-        return `${m}:${s}`;
-    };
+    const audio = new Audio("/chicken.mp3")
 
     return (
-        <div className='flex flex-col items-center justify-center h-screen bg-yellow-100 text-gray-900 font-mono'>
-            <h1>
-                🍳 Egg Timer
-            </h1>
+        <main className={`min-h-screen flex flex-col items-center justify-center transition-all duration-500
+            ${isNight ? 'bg-black text-green-300' : 'bg-white text-black text-retro-textDay'}`}>
 
-            <input
-                type="number"
-                min="1"
-                value={inputMinutes}
-                onChange={(e) => setInputMinutes(Number(e.target.value))}
-                className='mb-4 p-2 border-gray-300 rounded text-lg w-24 text-center'
-                disabled={isActive}
-            />
+            <h1 className="text-2xl font-pixel mb-8">🐔 Retro Egg Timer</h1>
 
-            <div className="text-6xl my-4">
-                {formatTime(time)}
+            <div className="text-4xl font-pixel tracking-widest mb-4">
+                {formatTime(timeLeft)}
             </div>
 
-            <div className="flex gap-4">
+            <div className="w-64 h-4 bg-gray-300 rounded mb-6 overflow-hidden">
+                <div
+                    className="h-full bg-green-500 transition-all"
+                    style={{ width: `${percentage}%` }}
+                />
+            </div>
+
+            <div className="flex gap-3">
                 <button
-                    onClick={handleStart}
-                    className='bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded'>
-                    Start
+                    onClick={() => setIsRunning((prev) => !prev)}
+                    className="px-4 py-2 font-pixel border border-black bg-white text-black hover:bg-gray-100"
+                >
+                    {isRunning ? "Pause" : "Start"}
                 </button>
+
                 <button
-                    onClick={handlePause}
-                    className="bg-yellow-500 hover:bg-yellow-400 text-white px-4 py-2 rounded">
-                    Pause
-                </button>
-                <button
-                    onClick={handleReset}
-                    className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded">
+                    onClick={() => {
+                        setTimeLeft(minutes * 60)
+                        setIsRunning(false)
+                    }}
+                    className="px-4 py-2 font-pixel border border-black bg-white text-black hover:bg-gray-100"
+                >
                     Reset
                 </button>
+
+                <button
+                    onClick={() => setIsNight(!isNight)}
+                    className="px-4 py-2 font-pixel border border-black text-black bg-white hover:bg-gray-100"
+                >
+                    {isNight ? "☀ Day" : "🌙 Night"}
+                </button>
             </div>
 
-            {/* ending beep */}
-            <audio 
-            ref={beepRef}
-            src="https://sedatoseda.com/wp-content/uploads/alarm-3.mp3"
-            preload='auto'
-            />
-        </div>
+            <div className="mt-4">
+                <label className="font-pixel text-sm">Set Minutes: </label>
+                <input
+                    type="number"
+                    value={minutes}
+                    onChange={(e) => {
+                        const val = parseInt(e.target.value)
+                        setMinutes(val)
+                        setTimeLeft(val * 60)
+                    }}
+                    className="w-16 text-center font-pixel border ml-2 p-1"
+                />
+            </div>
+        </main>
     );
-
-
-
-}
+};

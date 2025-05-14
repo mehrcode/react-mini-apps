@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "title": "Villa in Tehran",
+      "slug": "villa-in-tehran",
+      "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+    },
+    {
+      "id": 2,
+      "title": "Minimal House",
+      "slug": "minimal-house",
+      "image": "https://images.unsplash.com/photo-1588854337112-622f1ec97d48"
+    },
+    {
+      "id": 3,
+      "title": "Desert Pavilion",
+      "slug": "desert-pavilion",
+      "image": "https://images.unsplash.com/photo-1627634772972-3b5b27377db9"
+    }
+  ]
+  
