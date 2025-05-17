@@ -23,21 +23,21 @@ const PomodoroTimer = () => {
     // کنترل تایمر
     useEffect(() => {
         if (isRunning && timeLeft > 0) {
-            intervalRef.current = setInterval(() => {
-                setTimeLeft((prev) => prev - 1);
-            }, 1000);
-        } else if (!isRunning && intervalRef.current) {
-            clearInterval(intervalRef.current);
+            if (!intervalRef.current) {
+                intervalRef.current = setInterval(() => {
+                    setTimeLeft((prev) => Math.max(prev - 1, 0)); // Avoid negative values
+                }, 1000);
+            }
+        } else {
+            clearInterval(intervalRef.current as NodeJS.Timeout);
             intervalRef.current = null;
         }
 
-        // پاکسازی
         return () => {
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-            }
+            clearInterval(intervalRef.current as NodeJS.Timeout);
+            intervalRef.current = null;
         };
-    }, [isRunning]);
+    }, [isRunning, timeLeft]);
 
     // beep sound
     const playBeep = () => {

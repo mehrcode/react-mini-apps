@@ -8,7 +8,7 @@ type Task = {
 
 type Filter = "all" | "completed" | "incomplete";
 
-const page = () => {
+const Page = () => {
     const [task, setTask] = useState("");
     const [tasks, setTasks] = useState<Task[]>([]);
 
@@ -199,4 +199,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

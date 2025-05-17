@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 
-const page = () => {
+const Page = () => {
     const [turn, setTurn] = useState(1);
 
     const formatTurn = (number: number) => {
@@ -31,4 +31,4 @@ const page = () => {
     );
 };
 
-export default page
+export default Page

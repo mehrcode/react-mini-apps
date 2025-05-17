@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 
-const page = () => {
+const Page = () => {
     const [isOnline, setIsOnline] = useState(true);
 
     useEffect(() => {
@@ -30,4 +30,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

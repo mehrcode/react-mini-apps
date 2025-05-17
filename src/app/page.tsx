@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Home() {
   const apps = [
-    { name: "🧠 Pomodoro Timer", path: "/pomodorTimer" },
+    { name: "🧠 Pomodoro Timer", path: "/pomodoroTimer" },
     { name: "🐢 Progress Tracker", path: "/turtleProgress" },
     { name: "🐢 Guess Game", path: "/magicGuessGame" },
     { name: "📝 ToDo App", path: "/todo" },

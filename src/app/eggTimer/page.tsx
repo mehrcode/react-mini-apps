@@ -6,7 +6,6 @@ export default function EggTimer() {
     const [timeLeft, setTimeLeft] = useState(minutes * 60);
     const [isRunning, setIsRunning] = useState(false);
     const timeRef = useRef<NodeJS.Timeout | null>(null);
-    const beepRef = useRef<HTMLAudioElement | null>(null);
     const [isNight, setIsNight] = useState(false);
 
     const initialTime = minutes * 60;
@@ -26,7 +25,7 @@ export default function EggTimer() {
             }, 1000);
         } else if (timeLeft === 0) {
             setIsRunning(false);
-            beepRef.current?.play();
+            new Audio("/chicken.mp3").play(); 
         }
 
         return () => clearTimeout(timeRef.current!);
@@ -39,7 +38,6 @@ export default function EggTimer() {
         return `${min}:${sec}`;
     };
 
-    const audio = new Audio("/chicken.mp3")
 
     return (
         <main className={`min-h-screen flex flex-col items-center justify-center transition-all duration-500

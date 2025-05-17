@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react'
 
-const page = () => {
+const Page = () => {
     const initialTime = 5 * 60;
     const [time, setTime] = useState(initialTime);
     const [isActive, setIsActive] = useState(false);
@@ -9,18 +9,26 @@ const page = () => {
 
     useEffect(() => {
         if (isActive && time > 0) {
-            intervalRef.current = setInterval(() => {
-                setTime((prevTime) => prevTime - 1);
-            }, 1000);
+            if (!intervalRef.current) {
+                intervalRef.current = setInterval(() => {
+                    setTime((prevTime) => Math.max(prevTime - 1, 0));
+                }, 1000);
+            }
+        } else {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+                intervalRef.current = null;
+            }
         }
 
-        // Cleanup function 
         return () => {
             if (intervalRef.current) {
                 clearInterval(intervalRef.current);
+                intervalRef.current = null;
             }
         };
-    }, [isActive]);
+    }, [isActive, time]);
+
 
     const handleStart = () => {
         if (time > 0) setIsActive(true);
@@ -70,4 +78,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

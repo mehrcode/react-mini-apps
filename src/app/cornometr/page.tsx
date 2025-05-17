@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 
-const page = () => {
+const Page = () => {
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false);
 
@@ -77,4 +77,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
