@@ -8,7 +8,7 @@ type Task = {
 
 type Filter = "all" | "completed" | "incomplete";
 
-const Page = () => {
+export default function Todo() {
     const [task, setTask] = useState("");
     const [tasks, setTasks] = useState<Task[]>([]);
 
@@ -199,4 +199,3 @@ const Page = () => {
     )
 }
 
-export default Page

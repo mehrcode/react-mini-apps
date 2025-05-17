@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 
-const Page = () => {
+export default function Cornometr() {
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false);
 
@@ -77,4 +77,3 @@ const Page = () => {
     )
 }
 
-export default Page

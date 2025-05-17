@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 
-const Page = () => {
+export default function DigitalClock() {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -26,4 +26,3 @@ const Page = () => {
   )
 }
 
-export default Page

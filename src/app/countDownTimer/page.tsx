@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react'
 
-const Page = () => {
+export default function CountDown() {
     const initialTime = 5 * 60;
     const [time, setTime] = useState(initialTime);
     const [isActive, setIsActive] = useState(false);
@@ -78,4 +78,3 @@ const Page = () => {
     )
 }
 
-export default Page

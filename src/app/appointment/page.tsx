@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 
-const Page = () => {
+export default function Appointment() {
     const [turn, setTurn] = useState(1);
 
     const formatTurn = (number: number) => {
@@ -30,5 +30,3 @@ const Page = () => {
         </div>
     );
 };
-
-export default Page
