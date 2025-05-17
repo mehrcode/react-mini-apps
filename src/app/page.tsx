@@ -1,14 +1,20 @@
 import React from 'react'
 import { TypingAnimation } from "@/components/magicui/typing-animation";
-import { Link } from 'lucide-react';
+import Link from 'next/link';
 
 
 export default function Home() {
   const apps = [
-    { name: "🧠 Pomodoro Timer", path: "app/pomodorTimer" },
+    { name: "🧠 Pomodoro Timer", path: "/pomodorTimer" },
     { name: "🐢 Progress Tracker", path: "/turtleProgress" },
+    { name: "🐢 Guess Game", path: "/magicGuessGame" },
     { name: "📝 ToDo App", path: "/todo" },
-    { name: "📝 Appointment App", path: "/appointment" },
+    { name: "📝 Appointment", path: "/appointment" },
+    { name: "📝 Digital Clock", path: "/digitalClock" },
+    { name: "📝 Egg Timer", path: "/eggTimer" },
+    { name: "📝 Cornometr", path: "/cornometr" },
+    { name: "📝 Color Picker", path: "/colorpicker" },
+    { name: "📝 Connection Status", path: "/connectionStatus" },
   ]
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-[#fef8e0] p-6">
@@ -19,7 +25,7 @@ export default function Home() {
           <li key={index}>
             <Link
               href={app.path}
-              className="block bg-[#fdd835] hover:bg-[#fbc02d] text-black font-semibold py-4 px-22 rounded-xl text-center border-4 border-dashed border-[#4b2e83] shadow-lg transition-all duration-300"
+              className="block bg-[#fdd835] hover:bg-[#fbc02d] text-black font-semibold py-4 px-2 rounded-xl text-center border-4 border-dashed border-[#4b2e83] shadow-lg transition-all duration-300"
             >
               {app.name}
             </Link>
