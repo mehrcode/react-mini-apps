@@ -57,7 +57,7 @@ export default function Register() {
                     type="text"
                     value={name}
                     placeholder='اسم خودتو وارد کن...'
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={handleChange}
                     className="border border-gray-400 rounded px-4 py-2"
                 />
 

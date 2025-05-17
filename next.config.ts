@@ -3,9 +3,6 @@
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
-  },
-  "compilerOptions": {
-    "strict": false
   }
 }
 
