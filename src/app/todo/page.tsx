@@ -80,7 +80,7 @@ export default function Todo() {
 
     return (
         <div className="max-w-md mx-auto mt-10 p-4 retro-border rounded-xl bg-yellow-100 shadow-lg">
-            <h1 className="text-3xl font-bold text-center mb-4 text-pink-700">🌟 Todo List رترو 🌟</h1>
+            <h1 className="text-xl font-bold text-center mb-4 text-pink-700">🌟 Todo List 🌟</h1>
             <div className="flex space-x-2 mb-4">
                 <input
                     type="text"
