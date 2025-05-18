@@ -7,7 +7,7 @@ export default function Home() {
   const apps = [
     { name: "🧠 Pomodoro Timer", path: "/pomodoroTimer" },
     { name: "🐢 Progress Tracker", path: "/turtleProgress" },
-    { name: "🐢 Guess Game", path: "/magicGuessGame" },
+    { name: "🎮 Guess Game", path: "/magicGuessGame" },
     { name: "📝 ToDo App", path: "/todo" },
     { name: "📅 Appointment", path: "/appointment" },
     { name: "⏰ Digital Clock", path: "/digitalClock" },
