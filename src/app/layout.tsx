@@ -12,8 +12,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="bg-[#fef8e0] text-black font-sans">
-        <header className="w-full p-4 bg-[#4b2e83] text-white shadow-md flex justify-between items-center">
-          <Link href="/" className="text-lg font-bold hover:underline">🎮 React Mini Apps</Link>
+        <header className="w-full p-4 bg-[#4b2e83] text-white shadow-md flex flex-col gap-x-6 justify-between">
+          <Link href="/" className="text-lg font-bold hover:underline">Home</Link>
           <span className="text-sm opacity-80">Made With 💜 by MehrCode</span>
         </header>
 

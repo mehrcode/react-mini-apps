@@ -9,16 +9,16 @@ export default function Home() {
     { name: "🐢 Progress Tracker", path: "/turtleProgress" },
     { name: "🐢 Guess Game", path: "/magicGuessGame" },
     { name: "📝 ToDo App", path: "/todo" },
-    { name: "📝 Appointment", path: "/appointment" },
-    { name: "📝 Digital Clock", path: "/digitalClock" },
-    { name: "📝 Egg Timer", path: "/eggTimer" },
-    { name: "📝 Cornometr", path: "/cornometr" },
-    { name: "📝 Color Picker", path: "/colorpicker" },
-    { name: "📝 Connection Status", path: "/connectionStatus" },
+    { name: "📅 Appointment", path: "/appointment" },
+    { name: "⏰ Digital Clock", path: "/digitalClock" },
+    { name: "🐣 Egg Timer", path: "/eggTimer" },
+    { name: "⏱️ Cornometr", path: "/cornometr" },
+    { name: "🎨 Color Picker", path: "/colorpicker" },
+    { name: "📶 Connection Status", path: "/connectionStatus" },
   ]
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-[#fef8e0] p-6">
-      <TypingAnimation className="text-4xl font-bold mb-8 text-[#4b2e83] drop-shadow">🎮 React Mini Apps</TypingAnimation>
+      <TypingAnimation className="text-2xl md:text-4xl font-bold mb-8 text-[#4b2e83] drop-shadow">🎮 React Mini Apps</TypingAnimation>
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-md">
         {apps.map((app, index) => (
