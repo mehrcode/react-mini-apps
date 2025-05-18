@@ -10,11 +10,9 @@ export default function Home() {
     { name: "🎮 Guess Game", path: "/magicGuessGame" },
     { name: "📝 ToDo App", path: "/todo" },
     { name: "📅 Appointment", path: "/appointment" },
-    { name: "⏰ Digital Clock", path: "/digitalClock" },
     { name: "🐣 Egg Timer", path: "/eggTimer" },
     { name: "⏱️ Cornometr", path: "/cornometr" },
     { name: "🎨 Color Picker", path: "/colorpicker" },
-    { name: "📶 Connection Status", path: "/connectionStatus" },
   ]
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-[#fef8e0] p-6">
